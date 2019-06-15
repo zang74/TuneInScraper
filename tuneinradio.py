@@ -16,15 +16,14 @@ from selenium.webdriver.chrome.options import Options
 # Main Function
 
 def main():
-	
-	
-	
+
 	# Find your location of choice from https://tunein.com/radio/regions/
 	tuneinurl = 'https://tunein.com/radio/local/'
 	
 	# Where you're gonna save the final m3u8file
 	saveloc = '~/'
-  # The final M3U8 file name
+	
+	# The final M3U8 file name
 	tuneinradiom3u = saveloc + 'tuneinradio.m3u8'
 
 	options = Options()
@@ -38,7 +37,6 @@ def main():
 	driver.implicitly_wait(5)
 	driver.get(tuneinurl)
 
-	
 	# Pause a few seconds to let images URLs populate
 	time.sleep(5)
 	html = driver.page_source
