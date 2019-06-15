@@ -11,10 +11,13 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 # Main Function
 
 def main():
+	
+	
 	
 	# Find your location of choice from https://tunein.com/radio/regions/
 	tuneinurl = 'https://tunein.com/radio/local/'
@@ -24,8 +27,13 @@ def main():
   # The final M3U8 file name
 	tuneinradiom3u = saveloc + 'tuneinradio.m3u8'
 
+	options = Options()
+	options.headless = True
+	options.binary_location	= "/usr/bin/chrome" ## use "/usr/bin/chromium" on systems without official chrome
+	chromedriverpath = "/usr/bin/chromedriver" ## must be installed first ('sudo apt install chromedriver', etc...)
+	
 	# Setup webdriver
-	driver = webdriver.PhantomJS()
+	driver = webdriver.Chrome(executable_path=chromedriverpath, chrome_options=options)
 	driver.set_window_size(1400,8000)
 	driver.implicitly_wait(5)
 	driver.get(tuneinurl)
